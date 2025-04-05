@@ -10,7 +10,7 @@ import { extractDominantColor } from './utils/colorUtils';
 import './App.scss';
 
 const App = () => {
-  const [songs, setSongs] = useState(songsData);
+  const [songs] = useState(songsData);
   const [currentSong, setCurrentSong] = useState(songsData[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
