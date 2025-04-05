@@ -1,0 +1,82 @@
+// src/components/MusicList.scss
+.music-list-container {
+    padding: 20px 0;
+    
+    .tab-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .no-songs {
+      text-align: center;
+      color: #b3b3b3;
+      padding: 40px 0;
+    }
+    
+    .song-list {
+      .song-item {
+        padding: 8px 12px;
+        position: relative;
+        
+        .song-playing {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 15px;
+          
+          .playing-icon {
+            color: #1DB954;
+          }
+        }
+        
+        .options-menu {
+          position: relative;
+          
+          .options-icon {
+            cursor: pointer;
+            padding: 8px;
+            color: #b3b3b3;
+            
+            &:hover {
+              color: #ffffff;
+            }
+          }
+          
+          .options-dropdown {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #282828;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            min-width: 200px;
+            
+            .option-item {
+              padding: 12px 16px;
+              font-size: 13px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+              }
+              
+              .favorite {
+                margin-right: 10px;
+                font-size: 16px;
+                
+                &.active {
+                  color: #1DB954;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,243 @@
+// src/App.scss
+@import '~bootstrap/scss/bootstrap';
+
+// Variables
+$primary-color: #121212;
+$secondary-color: #212121;
+$text-primary: #ffffff;
+$text-secondary: #b3b3b3;
+$sidebar-width: 250px;
+
+// Global styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: $primary-color;
+  color: $text-primary;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  transition: background 0.5s ease;
+}
+
+// Sidebar styles
+.sidebar-col {
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    width: $sidebar-width;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    &.active {
+      transform: translateX(0);
+    }
+  }
+}
+
+// Content styles
+.content-col {
+  padding: 20px;
+  
+  @media (max-width: 768px) {
+    padding-left: 20px;
+    width: 100%;
+  }
+}
+
+// Music list styles
+.music-list-col {
+  padding-right: 20px;
+  
+  @media (max-width: 768px) {
+    padding-right: 0;
+  }
+}
+
+// Player styles
+.player-col {
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease;
+}
+
+// Common components styling
+.search-container {
+  position: relative;
+  margin-bottom: 20px;
+  
+  input {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    color: $text-primary;
+    
+    &::placeholder {
+      color: $text-secondary;
+    }
+    
+    &:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-secondary;
+  }
+}
+
+.song-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  .song-item {
+    padding: 8px 0;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    &.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .song-thumbnail {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+    
+    .song-info {
+      flex: 1;
+      
+      .song-title {
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0;
+      }
+      
+      .song-artist {
+        font-size: 12px;
+        color: $text-secondary;
+        margin: 0;
+      }
+    }
+    
+    .song-duration {
+      color: $text-secondary;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+    
+    .song-actions {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    
+    &:hover .song-actions {
+      opacity: 1;
+    }
+  }
+}
+
+// Loading animations
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: $text-secondary;
+    border-radius: 50%;
+    margin: 0 5px;
+    animation: bounce 1.4s infinite ease-in-out both;
+    
+    &:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+    
+    &:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+// Album art shadow effect
+.album-shadow {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
